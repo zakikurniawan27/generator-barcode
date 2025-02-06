@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import QRCode from "qrcode";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [url, setUrl] = useState("");
+  const [qrCode, setQrCode] = useState("");
 
+  const handleClick = () => {
+    QRCode.toDataURL(url, (error, url) => {
+      if (error) return console.error(error);
+
+      setQrCode(url);
+    });
+  };
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className="containter">
+        <div className="d-flex justify-content-center align-items-center w-100 h-100">
+          <div className="d-flex flex-column justify-content-center p-5 mb-5">
+            <div className="d-flex justify-content-center mb-3">
+              <img
+                src="src\assets\logo-app-qrcode.png"
+                alt="logo qr code"
+                width={220}
+                height={220}
+              />
+            </div>
+            <h1 className="fw-bold" style={{ fontSize: "50px" }}>
+              Generate URL to Barcode
+            </h1>
+            <div className="d-flex flex-row p-2">
+              <input
+                type="url"
+                placeholder="Masukan url yang ingin dijadikan barcode..."
+                className="form-control form-control-lg shadow-sm me-3"
+                onChange={(e) => {
+                  e.preventDefault();
+                  setUrl(e.target.value);
+                }}
+              />
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleClick}
+              >
+                Generate
+              </button>
+            </div>
+            {qrCode && (
+              <>
+                <img
+                  src={qrCode}
+                  alt="qr code"
+                  width={300}
+                  height={300}
+                  style={{ marginLeft: "9rem" }}
+                />
+                <a href={qrCode} download="qrCode.png" className="text-center">
+                  <button type="submit" className="btn btn-secondary">
+                    Download
+                  </button>
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+      </section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
