@@ -7,33 +7,54 @@ function App() {
   const [qrCode, setQrCode] = useState("");
 
   const handleClick = () => {
-    QRCode.toDataURL(url, (error, url) => {
-      if (error) return console.error(error);
+    QRCode.toDataURL(
+      url,
+      {
+        errorCorrectionLevel: "H",
+        width: 20,
+        margin: 1,
+      },
+      (error, url) => {
+        if (error) return console.error(error);
 
-      setQrCode(url);
-    });
+        setQrCode(url);
+      }
+    );
   };
   return (
     <>
       <section className="containter">
-        <div className="d-flex justify-content-center align-items-center w-100 h-100">
-          <div className="d-flex flex-column justify-content-center p-5 mb-5">
+        <div
+          className={`${
+            !qrCode
+              ? "d-flex justify-content-center align-items-center w-100 vh-100"
+              : qrCode
+              ? "d-flex justify-content-center align-items-center w-100 h-100"
+              : ""
+          }`}
+        >
+          <div className="d-flex flex-column justify-content-center p-5">
             <div className="d-flex justify-content-center mb-3">
               <img
+                id="logo"
                 src="src\assets\logo-app-qrcode.png"
                 alt="logo qr code"
                 width={220}
                 height={220}
               />
             </div>
-            <h1 className="fw-bold" style={{ fontSize: "50px" }}>
-              Generate URL to Barcode
+            <h1
+              className="fw-bold text-center"
+              id="title"
+              style={{ fontSize: "50px" }}
+            >
+              Generator Barcode
             </h1>
             <div className="d-flex flex-row p-2">
               <input
-                type="url"
-                placeholder="Masukan url yang ingin dijadikan barcode..."
-                className="form-control form-control-lg shadow-sm me-3"
+                type="text"
+                placeholder="Ketikan sesuatu yang ingin dijadikan barcode..."
+                className="form-control shadow-sm me-3"
                 onChange={(e) => {
                   e.preventDefault();
                   setUrl(e.target.value);
@@ -41,7 +62,8 @@ function App() {
               />
               <button
                 type="submit"
-                className="btn btn-primary"
+                id="submit"
+                className="btn btn-primary btn-sm"
                 onClick={handleClick}
               >
                 Generate
@@ -49,15 +71,21 @@ function App() {
             </div>
             {qrCode && (
               <>
-                <img
-                  src={qrCode}
-                  alt="qr code"
-                  width={300}
-                  height={300}
-                  style={{ marginLeft: "9rem" }}
-                />
+                <div className="d-flex justify-content-center">
+                  <img
+                    id="qrcode"
+                    src={qrCode}
+                    alt="qr code"
+                    width={220}
+                    height={220}
+                  />
+                </div>
                 <a href={qrCode} download="qrCode.png" className="text-center">
-                  <button type="submit" className="btn btn-secondary">
+                  <button
+                    id="download"
+                    type="submit"
+                    className="btn btn-primary btn-sm"
+                  >
                     Download
                   </button>
                 </a>
