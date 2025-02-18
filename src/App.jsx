@@ -1,25 +1,19 @@
-import { useState } from "react";
-import QRCode from "qrcode";
+import { useRef, useState } from "react";
+// import QRCode from "qrcode";
+import { QRCode } from "react-qrcode-logo";
 import "./App.css";
 
 function App() {
   const [url, setUrl] = useState("");
   const [qrCode, setQrCode] = useState("");
+  const ref = useRef();
 
   const handleClick = () => {
-    QRCode.toDataURL(
-      url,
-      {
-        errorCorrectionLevel: "H",
-        width: 20,
-        margin: 1,
-      },
-      (error, url) => {
-        if (error) return console.error(error);
+    setQrCode(url);
+  };
 
-        setQrCode(url);
-      }
-    );
+  const handleDownload = () => {
+    ref.current?.download();
   };
   return (
     <>
@@ -72,23 +66,30 @@ function App() {
             {qrCode && (
               <>
                 <div className="d-flex justify-content-center">
-                  <img
-                    id="qrcode"
-                    src={qrCode}
-                    alt="qr code"
-                    width={220}
-                    height={220}
+                  <QRCode
+                    ref={ref}
+                    value={url}
+                    logoImage="public\logo-app-qrcode.png"
+                    logoWidth={37}
+                    size={200}
+                    ecLevel="M"
+                    enableCORS
+                    removeQrCodeBehindLogo
+                    qrStyle="fluid"
+                    logoPadding={0.5}
+                    logoPaddingStyle="circle"
+                    eyeRadius={5}
                   />
                 </div>
-                <a href={qrCode} download="qrCode.png" className="text-center">
-                  <button
-                    id="download"
-                    type="submit"
-                    className="btn btn-primary btn-sm"
-                  >
-                    Download
-                  </button>
-                </a>
+                <button
+                  id="download"
+                  type="submit"
+                  className="btn btn-primary btn-sm"
+                  onClick={handleDownload}
+                >
+                  Download
+                </button>
+                <div className="text-center"></div>
               </>
             )}
           </div>
