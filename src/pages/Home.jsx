@@ -34,7 +34,7 @@ const Home = () => {
             <div className="d-flex justify-content-center mb-3">
               <img
                 id="logo"
-                src="public\logo-app-qrcode-white.svg"
+                src="/public/logo-app-qrcode-white.svg"
                 alt="logo qr code"
                 width={220}
                 height={220}
@@ -65,7 +65,7 @@ const Home = () => {
                   <QRCode
                     ref={ref}
                     value={url}
-                    logoImage="public\logo-app-qrcode.svg"
+                    logoImage="/public/logo-app-qrcode.svg"
                     logoWidth={37}
                     size={200}
                     ecLevel="M"
