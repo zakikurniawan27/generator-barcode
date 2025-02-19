@@ -27,10 +27,7 @@ const Home = () => {
               : ""
           }`}
         >
-          <div
-            id="content"
-            className="d-flex flex-column justify-content-center"
-          >
+          <div className="d-flex flex-column justify-content-center">
             <div className="d-flex justify-content-center mb-3">
               <img
                 id="logo"

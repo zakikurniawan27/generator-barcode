@@ -1,7 +1,4 @@
 @media (max-width: 767.98px) {
-  main {
-    background-color: #2d336b !important;
-  }
   button:active {
     background-color: #a9b5df;
   }
@@ -28,7 +25,7 @@
 }
 
 main {
-  background-color: #2d336b;
+  background-image: linear-gradient(to bottom left, #3e53b0, #2d336b);
 }
 
 h1 {
@@ -36,7 +33,7 @@ h1 {
 }
 
 button {
-  background-color: #7886c7;
+  background-image: linear-gradient(to bottom left, #7483c6, #586abc);
   color: #fff2f2;
   width: fit-content;
   height: 100%;
@@ -46,11 +43,6 @@ button {
 }
 
 button:hover {
-  background-color: #a9b5df;
+  background-image: linear-gradient(to bottom right, #34448e, #465dc5);
   pointer-events: painted;
-}
-
-#content {
-  background-color: #2d336b;
-  padding: 6.9rem;
 }
