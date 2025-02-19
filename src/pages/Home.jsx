@@ -29,7 +29,7 @@ const Home = () => {
         >
           <div
             id="content"
-            className="d-flex flex-column justify-content-center border border-2 rounded"
+            className="d-flex flex-column justify-content-center"
           >
             <div className="d-flex justify-content-center mb-3">
               <img

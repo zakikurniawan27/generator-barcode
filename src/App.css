@@ -28,7 +28,7 @@
 }
 
 main {
-  background-color: #fff2f2;
+  background-color: #2d336b;
 }
 
 h1 {
@@ -52,6 +52,5 @@ button:hover {
 
 #content {
   background-color: #2d336b;
-  border-color: #7886c7;
   padding: 6.9rem;
 }
