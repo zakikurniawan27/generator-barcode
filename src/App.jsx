@@ -19,15 +19,19 @@ function App() {
     <>
       <section className="containter">
         <div
+          id="background"
           className={`${
             !qrCode
               ? "d-flex justify-content-center align-items-center w-100 vh-100"
               : qrCode
-              ? "d-flex justify-content-center align-items-center w-100 h-100"
+              ? "d-flex justify-content-center align-items-center w-100 mh-100"
               : ""
           }`}
         >
-          <div className="d-flex flex-column justify-content-center p-5">
+          <div
+            id="content"
+            className="d-flex flex-column justify-content-center border border-2 rounded"
+          >
             <div className="d-flex justify-content-center mb-3">
               <img
                 id="logo"
@@ -54,42 +58,33 @@ function App() {
                   setUrl(e.target.value);
                 }}
               />
-              <button
-                type="submit"
-                id="submit"
-                className="btn btn-primary btn-sm"
-                onClick={handleClick}
-              >
+              <button type="submit" onClick={handleClick}>
                 Generate
               </button>
             </div>
             {qrCode && (
               <>
-                <div className="d-flex justify-content-center">
+                <div className="d-flex justify-content-center mt-3">
                   <QRCode
                     ref={ref}
                     value={url}
-                    logoImage="public\logo-app-qrcode.png"
+                    logoImage="public\logo-app-qrcode-black.png"
                     logoWidth={37}
                     size={200}
                     ecLevel="M"
                     enableCORS
                     removeQrCodeBehindLogo
                     qrStyle="fluid"
-                    logoPadding={0.5}
+                    logoPadding={7}
                     logoPaddingStyle="circle"
                     eyeRadius={5}
                   />
                 </div>
-                <button
-                  id="download"
-                  type="submit"
-                  className="btn btn-primary btn-sm"
-                  onClick={handleDownload}
-                >
-                  Download
-                </button>
-                <div className="text-center"></div>
+                <div className="text-center mt-3">
+                  <button type="submit" onClick={handleDownload}>
+                    Download
+                  </button>
+                </div>
               </>
             )}
           </div>

@@ -1,14 +1,57 @@
 @media (max-width: 767.98px) {
+  main {
+    background-color: #2d336b !important;
+  }
+  button:active {
+    background-color: #a9b5df;
+  }
   #title {
     font-size: 20px !important;
   }
   #logo {
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
   }
   #qrcode {
     margin-left: 2.5rem;
     width: 13rem;
     height: 13rem;
   }
+  #content {
+    border: none !important;
+    padding: 0rem !important;
+  }
+  #background {
+    padding-top: 6.29rem;
+    padding-bottom: 6.29rem;
+  }
+}
+
+main {
+  background-color: #fff2f2;
+}
+
+h1 {
+  color: #fff2f2;
+}
+
+button {
+  background-color: #7886c7;
+  color: #fff2f2;
+  width: fit-content;
+  height: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border-color: #a9b5df;
+}
+
+button:hover {
+  background-color: #a9b5df;
+  pointer-events: painted;
+}
+
+#content {
+  background-color: #2d336b;
+  border-color: #7886c7;
+  padding: 6.9rem;
 }
