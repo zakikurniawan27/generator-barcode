@@ -34,7 +34,7 @@ const Home = () => {
             <div className="d-flex justify-content-center mb-3">
               <img
                 id="logo"
-                src="src\assets\logo-app-qrcode.png"
+                src="public\logo-app-qrcode.png"
                 alt="logo qr code"
                 width={220}
                 height={220}
