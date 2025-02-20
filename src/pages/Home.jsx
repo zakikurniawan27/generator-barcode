@@ -44,8 +44,9 @@ const Home = () => {
             >
               Generator Barcode
             </h1>
-            <div className="d-flex flex-row p-2">
+            <div id="content-input" className="d-flex flex-row p-2">
               <input
+                id="url"
                 type="text"
                 placeholder="Ketikan sesuatu yang ingin dijadikan barcode..."
                 className="form-control shadow-sm me-3"
@@ -54,7 +55,9 @@ const Home = () => {
                   setUrl(e.target.value);
                 }}
               />
-              <Button handleSubmit={handleClick}>Generate</Button>
+              <div id="content-button-input">
+                <Button handleSubmit={handleClick}>Generate</Button>
+              </div>
             </div>
             {qrCode && (
               <>

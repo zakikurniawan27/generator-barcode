@@ -2,6 +2,23 @@
   button:active {
     background-color: #a9b5df;
   }
+  button {
+    font-size: 15px;
+  }
+  #url {
+    font-size: 14px;
+    width: 20rem;
+    margin-bottom: 10px;
+    margin-right: 0px !important;
+  }
+  #content-input {
+    display: flex;
+    flex-direction: column !important;
+  }
+  #content-button-input {
+    display: flex;
+    justify-content: center;
+  }
   #title {
     font-size: 20px !important;
   }
@@ -45,4 +62,8 @@ button {
 button:hover {
   background-image: linear-gradient(to bottom right, #34448e, #465dc5);
   pointer-events: painted;
+}
+
+#url {
+  width: 23rem;
 }
