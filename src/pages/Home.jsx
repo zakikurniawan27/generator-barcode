@@ -70,9 +70,8 @@ const Home = () => {
                     size={200}
                     ecLevel="M"
                     enableCORS
-                    removeQrCodeBehindLogo
                     qrStyle="fluid"
-                    logoPadding={7}
+                    logoPadding={1}
                     logoPaddingStyle="circle"
                     eyeRadius={5}
                   />
