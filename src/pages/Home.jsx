@@ -1,10 +1,17 @@
 import { useRef, useState } from "react";
 import { QRCode } from "react-qrcode-logo";
 import Button from "../components/Button";
+import Checkbox from "../components/Checkbox";
 
 const Home = () => {
   const [url, setUrl] = useState("");
   const [qrCode, setQrCode] = useState("");
+  const [isChecked, setChecked] = useState(false);
+  const [file, setFile] = useState({
+    name: "",
+    logo: "",
+  });
+
   const ref = useRef();
 
   const handleClick = () => {
@@ -14,6 +21,11 @@ const Home = () => {
   const handleDownload = () => {
     ref.current?.download();
   };
+
+  const checkboxHandler = () => {
+    setChecked(!isChecked);
+  };
+
   return (
     <>
       <section className="containter">
@@ -59,13 +71,32 @@ const Home = () => {
                 <Button handleSubmit={handleClick}>Generate</Button>
               </div>
             </div>
+            <Checkbox checkHandler={checkboxHandler} />
+            {isChecked == true && (
+              <div className="input-group">
+                <input
+                  type="file"
+                  className="form-control"
+                  id="inputGroupFile04"
+                  aria-describedby="inputGroupFileAddon04"
+                  aria-label="Upload"
+                  onChange={(e) => {
+                    const selectedFile = e.target.files[0];
+                    if (selectedFile) {
+                      const objectUrl = URL.createObjectURL(selectedFile);
+                      setFile({ ...file, name: selectedFile, logo: objectUrl });
+                    }
+                  }}
+                />
+              </div>
+            )}
             {qrCode && (
               <>
                 <div className="d-flex justify-content-center mt-3">
                   <QRCode
                     ref={ref}
                     value={url}
-                    logoImage="/logo-app-qrcode.svg"
+                    logoImage={file.logo}
                     logoWidth={37}
                     size={200}
                     ecLevel="M"

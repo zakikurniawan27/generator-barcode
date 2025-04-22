@@ -39,6 +39,10 @@
     padding-top: 6.29rem;
     padding-bottom: 6.29rem;
   }
+  .input-group {
+    width: 23.4rem;
+    margin-left: 5px;
+  }
 }
 
 main {
@@ -66,4 +70,8 @@ button:hover {
 
 #url {
   width: 23rem;
+}
+
+#inputGroupFileAddon04 {
+  padding: 5px;
 }
